@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>Χρήστες - Σύστημα Ανακοινώσεων</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #333;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://aueb.gr/" target="_blank"><img src="../../img/hermis_logo.jpg" alt="Οικονομικό Πανεπιστήμιο Αθηνών" width="48" height="auto"></a>
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html"><i class="fa fa-fw fa-home"></i>Αρχική</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Χρήστες
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../users/users.html">Χρήστες</a></li>
+                            <li><a class="dropdown-item" href="../users/roles.html">Ρόλοι</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../users/users-category.html">Κατηγορίες Χρηστών</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Υπηρεσίες Ιδρύματος
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../departments/departments.html">Διευθύνσεις</a></li>
+                            <li><a class="dropdown-item" href="../departments/subdepartments.html">Τμήματα</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../departments/categories.html">Κατηγορίες</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ανακοινώσεις
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../announcements/announcements.html">Δημιουργία Ανακοινώσεων</a></li>
+                            <li><a class="dropdown-item" href="../announcements/subscription.html">Εγγραφή σε λίστα</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="nav-link text-light text-opacity-50" href="../about.html">Επικοινωνία</a>
+            </div>
+        </div>
+    </nav>
+    <!-- <a href="https://aueb.gr/" target="_blank">
+        <img src="../../img/hermis_logo.jpg" alt="Οικονομικό Πανεπιστήμιο Αθηνών" width="50px" height="auto">
+    </a>
+    <a href="../index.html">
+        <img src="../../img/home-icon.png" alt="Οικονομικό Πανεπιστήμιο Αθηνών" width="30px" height="auto">
+    </a>
+    <a href="users.html">Χρήστες</a>
+    <a href="roles.html">Ρόλοι</a>
+    <a href="users-category.html">Κατηγορίες Χρηστών</a> -->
+
+    <div class="container border bg-light py-3 my-3">
+        <h2>Χρήστες Εφαρμογής</h2>
+
+        <form id="frmUser">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" name="username" id="username" aria-describedby="usernameHelp">
+              <div id="usernameHelp" class="form-text">Πληκτρολογήστε το username που επιθυμείτε.</div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Όνομα</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="mb-3">
+                <label for="surname" class="form-label">Επίθετο</label>
+                <input type="text" class="form-control" name="surname" id="surname">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Κατηγορία</label><br>
+                <select  name="category" id="category" class="form-control">
+                    <option value="Προπτυχιακός">Προπτυχιακός</option>
+                    <option value="Μεταπτυχιακός">Μεταπτυχιακός</option>
+                    <option value="ΔΕΠ">ΔΕΠ</option>
+                    <option value="ΕΔΙΠ">ΕΔΙΠ</option>
+                </select>
+            </div>
+                        
+            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        </form>
+        <div class="row">
+            <div class="col text-center">
+                <button class="btnSubmit btn btn-primary text-center">submit</button>
+                <button class="btnReset btn btn-danger text-center ">reset</button>
+    
+            </div>
+          
+        </div>
+    </div>   
+    
+    <hr>
+    
+    <!-- Η στοιχιση του πίνακα μπορεί να γίνει και με το σχολιασμένο style -->
+    <!-- .table {
+        margin: 0 auto;
+        width: 80%;
+    } -->
+   
+    <div class="row justify-content-center">
+        <table id="userTable" class="table  table-hover  w-auto ">
+            
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Όνομα</th>
+                    <th>Επίθετο</th>
+                    <th>Κατηγορία</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr>
+                <td>lol</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row row-cols-5 justify-content-center w">
+        <a class="btn btn-primary" href="../index.html">Επιστροφή</a>
+    </div>
+
+    <script>
+
+const data = 
+        [
+            {
+                username : "admin", 
+                name : "admin1",
+                surname : "admin1",
+                category:"doihkitikos",
+                email:"admin@aueb.gr"
+            },
+            {
+                username : "xx1", 
+                name : "onoma1",
+                surname : "epitheto1",
+                category:"doihkitikos",
+                email:"xxx1@aueb.gr"
+            },
+            {
+                username : "xx2", 
+                name : "onoma2",
+                surname : "epitheto2",
+                category:"dep",
+                email:"xxx2@aueb.gr"
+            },
+            {
+                username : "xx3", 
+                name : "onoma3",
+                surname : "epitheto3",
+                category:"edip",
+                email:"xxx3@aueb.gr"
+            },
+            {
+                username : "xx4", 
+                name : "onoma4",
+                surname : "epitheto4",
+                category:"edip",
+                email:"xxx4@aueb.gr"
+            },
+        ]
+//*************notes*************
+
+//  console.log("test");
+// $("#tbody").empty();
+//$("#frmUser")[0].reset();
+
+//*************notes*************
+
+        $("document").ready(function () {
+            tableBuilder();
+            submitButton();
+            dataDelete();
+            dataUpdate();
+        });
+   
+function tableBuilder() {
+    $("#tbody").empty();
+    var dataLength = data.length;
+    for (let i = 0; i < dataLength; i++) {
+        let username = data[i].username;
+        let name = data[i].name;
+        let surname = data[i].surname;
+        let category = data[i].category;
+        let email = data[i].email;
+        let text = 
+        `
+        <tr>
+            <td>${username}</td>
+            <td>${name}</td>
+            <td>${surname}</td>
+            <td>${category}</td>
+            <td>${email}</td>
+            <td><button class="btnUpdate btn btn-primary text-center" value=${username}>Update</button></td>
+            <td><button class="btnDelete btn btn-danger text-center" value=${username}>Delete</button></td>
+        </tr>    
+        `
+   
+        
+        
+        $("#tbody").append(text);
+    }
+}
+
+function submitButton() {
+    $(".row").on("click", ".btnSubmit", function () {
+        
+        let username = $("#username").val();
+        let name = $("#name").val();
+        let surname = $("#surname").val();
+        let category = $("#category").val();
+        let email = $("#email").val();
+
+        const formData = 
+        {
+            username : username, 
+            name : name, 
+            surname : surname, 
+            category : category, 
+            email : email 
+        };
+
+        
+        let usernameDelete = localStorage.getItem("deleteValue");
+        if (usernameDelete) 
+        {
+            let index = data.findIndex(object => {
+                return object.username === usernameDelete;
+            });
+            data[index] = formData;
+            tableBuilder();
+            localStorage.clear();
+        }
+        else
+        {
+            data.push(formData);
+            tableBuilder();
+        }
+
+        
+        
+        formClear();
+    })
+}
+
+function formClear() {
+    $("#frmUser")[0].reset();
+}
+    
+
+function dataDelete() {
+    $(".row").on("click", ".btnDelete", function () {
+        let index = data.findIndex(object => {
+            return object.username === $(this).val();
+        });
+        data.splice(index,1);
+        tableBuilder();
+    })
+}
+
+function dataUpdate() {
+    $(".row").on("click", ".btnUpdate", function () {
+        let item = data.find(object => {
+            return object.username === $(this).val()
+        });
+        $("#username").val(item.username);
+        $("#name").val(item.name);
+        $("#surname").val(item.surname);
+        $("#category").val(item.category);
+        $("#email").val(item.email);
+
+        $("#username").prop("disabled", true);
+        $("#password").prop("disabled", true);
+
+        localStorage.setItem("deleteValue", item.username);
+        //console.log(item);
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//development
+
+
+// $("document").ready(function () {
+//     tableBuilder();
+//     submitBuilder();
+//     deletefun();
+//     updatefun();
+// })
+
+// function tableBuilder() {
+//     $("#tbody").empty();
+//     let dataLength = data.length;
+//     for (let i = 0; i < dataLength; i++) {
+//         let username = data[i].username;
+//         let name = data[i].name;
+//         let surname = data[i].surname;
+//         let category = data[i].category;
+//         let email = data[i].email;
+
+
+//         let textData = 
+//         `
+//         <tr>
+//             <td>${username}</td>
+//             <td>${name}</td>
+//             <td>${surname}</td>
+//             <td>${category}</td>
+//             <td>${email}</td>
+//             <td>
+//                 <button class="btnUpdate btn btn-primary" value="${username}">Τροποποιση</button>
+//                 <button class="btnDelete btn btn-danger" value="${username}">Διαγραφη</button>
+//             </td>
+//         </tr>    
+//         `
+
+//         $("tbody").append(textData);
+//     }
+// }
+
+// function submitBuilder() {
+//     $(".row").on("click", ".btnSubmit", function () 
+//     {
+//         let username = $("#username").val();
+//         let name = $("#name").val();
+//         let surname = $("#surname").val();
+//         let category = $("#category").val();
+//         let email = $("#email").val();
+//         let formData = {
+//             username : username,
+//             name : name,
+//             surname : surname,
+//             category : category,
+//             email : email
+//         };
+//         //console.log(formData);
+//         //xrisimopiw local storage gia na perasw to value gia to update
+//         const updateUser = localStorage.getItem('updateUser');
+//         if(updateUser)
+//         {
+//             //psaxnw to index me vash to username
+//             let index = data.findIndex(object => {
+//                 return object.username === updateUser;
+//             })
+//             data[index] = formData;
+//             console.log("modify");
+//             localStorage.removeItem("updateUser");
+//             $("#username").prop("disabled",false);
+//             $("#password").prop("disabled",false);
+//         }
+//         else
+//         {
+//             data.push(formData);
+//         }
+//         tableBuilder();
+//         formClear();
+//     })
+// }
+
+
+
+// function formClear() {
+//     $("#frmUser")[0].reset();
+// }
+
+
+// function deletefun() {
+//     $(".row").on("click", ".btnDelete", function (){
+//         let value = $(this).val();
+//         console.log(value);
+//         let index = data.findIndex( object =>{
+//             return object.username === value;
+//         })
+//         console.log(value, index);
+//         data.splice(index , 1);
+//         console.log(data);
+//         tableBuilder();
+//     });
+// }
+
+// function updatefun() 
+// {
+//     $(".row").on("click", ".btnUpdate", function (){
+//         let value = $(this).val();
+//         let item = data.find(object => object.username === value);
+//         $('#username').val(item.username);
+//         $('#name').val(item.name);
+//         $('#surname').val(item.surname);
+//         $('#category').val(item.category);
+//         $('#email').val(item.email);
+//         $("#username").prop("disabled",true);
+//         $("#password").prop("disabled",true);
+//         localStorage.setItem('updateUser', item.username);
+//         console.log(item);
+//     });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//             $("document").ready(function () 
+//             { 
+//                 buttonSubmit();
+//                 createTable();
+              
+//             })
+
+// function createTable() 
+// {
+//     let dataLength = data.length;
+//    // console.log(dataLength);
+//     for (let i = 0; i < dataLength; i++) 
+//     {
+//         let username = data[i].username;
+//         let name = data[i].name;
+//         let surname = data[i].surname;
+//         let category = data[i].category;
+//         let email = data[i].email;
+
+//         let text = 
+//         `
+//         <tr>
+//             <td>${username}</td>,
+//             <td>${name}</td>,
+//             <td>${surname}</td>,
+//             <td>${category}</td>,
+//             <td>${email}</td>,
+//         </tr>
+//         `
+//         $("#tbody").append(text);
+//     }
+// }
+
+// function buttonSubmit() 
+// {
+//     $(".row").on("click", ".btnSubmit", function () {
+//     let username = $("#username").val();
+//     let name = $("#name").val();
+//     let surname = $("#surname").val();
+//     let category = $("#category").val();
+//     let email = $("#email").val();
+
+//     const dataSubmit = 
+//     {
+//         username : username,
+//         name : name,
+//         surname : surname,
+//         category : category,
+//         email : email
+//     }
+//     data.push(dataSubmit);
+//     $("#tbody").empty();
+//     createTable();
+//     clearForm()
+//     })
+   
+// }
+
+// function clearForm() 
+// {
+//     $("#frmUser")[0].reset();
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $("document").ready(function () 
+// {
+//     createTbody();
+//     // $(".row").on("click", ".btnSubmit", function () {
+//     //         let username = $("#username").val();
+//     //         let name = $("#name").val();
+//     //         let surname = $("#surname").val();
+//     //         let category = $("#category").val();
+//     //         let email = $("#email").val();
+      
+//     //         let item = {
+//     //             username : username,
+//     //             name : name ,
+//     //             surname : surname ,
+//     //             category : category,
+//     //             email : email
+//     //           } 
+      
+//     //         console.log(item);
+
+//     //         data.push(item);
+//     //         createTbody();
+
+//     //         resetForm();
+//     //         console.log(data);
+//     //     })
+// })
+
+
+// function createTbody() {
+
+//     //$("#userTable > tbody").empty();
+
+//     let len = data.length;
+//     for (let i = 0; i < len; i++) 
+//     {
+//         let username = data[i].username;
+//         let name = data[i].name;
+//         let surname = data[i].surname;
+//         let category = data[i].categoty;
+//         let email = data[i].email;
+
+//         console.log(username, name, surname, category, email);
+
+//         let str ="<tr>"
+//             +"<td>" + username + "</td>"
+//             +"<td>" + name + "</td>"
+//             +"<td>" + surname + "</td>"
+//             +"<td>" + category + "</td>"
+//             +"<td>" + email + "</td>"+
+//         "</tr>" ;
+
+
+            
+
+//         $("#userTable tbody").append(str);
+//     }
+// }
+
+// function resetForm() {
+//     //frmUser
+//     $("#frmUser")[0].reset();
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+// //perimenei na fortosei h selida kai meta trexei to function
+//         $(document).ready(function () {
+//             let len = data.length;
+//             for(let i = 0; i < len ; i++){
+//                 var username = data[i].username;
+//                 var name = data[i].name;
+//                 var surname = data[i].surname;
+//                 var category = data[i].category;
+//                 var email = data[i].email;
+
+//                 console.log(name,surname);
+
+//                 let tr_stry = 
+//                 `<tr>
+//                     <td>${username}</td>
+//                     <td>${name}</td>
+//                     <td>${surname}</td>
+//                     <td>${category}</td>
+//                     <td>${email}</td>
+//                     </tr>`;
+
+//                     $('#tbody').append(tr_stry);
+
+//                     $('.row').on("click", ".btnSubmit", function () {
+//                         let username = $('#username').val()
+//                         let name = $('#name').val()
+//                         let surname = $('#surname').val()
+//                         let category = $('#category').val()
+//                         let email = $('#email').val()
+
+//                         console.log(username,name,surname,category,email);
+
+//                     })
+//             }
+            
+//         });
+    </script>
+</body>
+</html>
